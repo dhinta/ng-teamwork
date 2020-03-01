@@ -1,0 +1,14 @@
+label {
+  &.active {
+    left: 0;
+    top: 0;
+    color: #fff;
+  }
+
+  &.required {
+    &::after {
+      color: #FF0000;
+      content: ' *';
+    }
+  }
+}

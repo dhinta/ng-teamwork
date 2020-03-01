@@ -1,0 +1,11 @@
+<label
+  for="{{ labelFor }}"
+  [ngClass]="{ 'active': active, 'required': required }"
+  (click)="toggleFocus()"
+  >{{ labelText }}</label
+>
+<ng-content></ng-content>
+<app-error-message
+  [errors]="errors"
+  [isFormSubmitted]="isFormSubmitted"
+></app-error-message>
