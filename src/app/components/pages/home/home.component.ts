@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ValidationService } from 'src/app/modules/shared/services/validation.service';
 
 @Component({
   selector: 'app-home',
@@ -9,20 +10,29 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   public form: FormGroup;
+  public isSubmitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private validationService: ValidationService
+  ) {
     this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required]
+      email: [
+        '',
+        [
+          this.validationService.required('login.email.required'),
+          this.validationService.email('login.email.emailFormat')
+        ]
+      ],
+      password: ['', this.validationService.required('login.password.required')]
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
+    this.isSubmitted = true;
     console.log(this.form);
     console.log(this.form.value);
   }
-
 }

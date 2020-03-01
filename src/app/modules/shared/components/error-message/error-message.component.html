@@ -1,6 +1,10 @@
-<div class="alert alert-danger error-msg-container" role="alert">
+<div
+  class="alert error-msg-container"
+  role="alert"
+  *ngIf="errors && isFormSubmitted"
+  [ngClass]="{'alert-success': errors.success, 'alert-danger': !errors.success}"
+>
   <ul>
-    <li>Bipod bole ase na</li>
-    <li>karon na boleo ase</li>
+    <li *ngIf="errors.message" [innerHTML]="errors.message"></li>
   </ul>
 </div>

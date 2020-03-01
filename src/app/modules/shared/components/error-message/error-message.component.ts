@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ValidationMessageResponse } from '../../models/validation';
 
 @Component({
   selector: 'app-error-message',
@@ -7,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ErrorMessageComponent implements OnInit {
 
-  @Input() errors: any;
+  @Input() errors: ValidationMessageResponse;
+  @Input() isFormSubmitted: boolean;
 
   constructor() { }
 

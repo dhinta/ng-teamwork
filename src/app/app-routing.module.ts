@@ -4,10 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PublicBaseComponent } from './components/layout/public-base/public-base.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { ValidationResolverService } from './services/validation-resolver.service';
 
 const routes: Routes = [{
   path: '',
   component: PublicBaseComponent,
+  resolve: {
+    validationMessageContent: ValidationResolverService
+  },
   children: [{
     path: '',
     component: HomeComponent
